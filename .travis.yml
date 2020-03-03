@@ -8,7 +8,7 @@ before_install:
     - docker build -t safialyounis/react-test -f ./client/Dockerfile.dev ./client 
 
 script:
-    - docker run safialyounis/react-test npm run test -- -- coverage
+    - docker run safialyounis/react-test npm run test -- --coverage
 
 after_success:
     - docker build -t safialyounis/multi-client ./client
