@@ -5,21 +5,21 @@ services:
 
 
 before_install:
-    - docker build -t SafiAlyounis/react-test -f ./client/Dockerfile.dev ./client 
+    - docker build -t safialyounis/react-test -f ./client/Dockerfile.dev ./client 
 
 script:
-    - docker run SafiAlyounis/react-test npm run test -- --coverage
+    - docker run safialyounis/react-test npm run test -- --coverage
 
 after_success:
-    - docker build -t SafiAlyounis/multi-client ./client
-    - docker build -t SafiAlyounis/multi-nginx ./nginx
-    - docker build -t SafiAlyounis/multi-server ./server
-    - docker build -t SafiAlyounis/multi-worker ./worker
+    - docker build -t safialyounis/multi-client ./client
+    - docker build -t safialyounis/multi-nginx ./nginx
+    - docker build -t safialyounis/multi-server ./server
+    - docker build -t safialyounis/multi-worker ./worker
     #log in to docker cli
     - echo "$DOCKER_PASSWORD" | docke login -u "$DOCKER_ID" --PASSWORD-stdin
     # to take those images and put them to docker hup
-    - docker  push SafiAlyounis/multi-client
-    - docker push SafiAlyounis/multi-nginx
-    - docker push SafiAlyounis/multi-server
-    - docker push SafiAlyounis/multi-worker
+    - docker  push safialyounis/multi-client
+    - docker push safialyounis/multi-nginx
+    - docker push safialyounis/multi-server
+    - docker push safialyounis/multi-worker
 
